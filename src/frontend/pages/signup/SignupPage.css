@@ -1,0 +1,10 @@
+.signupPage-container {
+  background-color: var(--primary--color);
+  gap: 3rem;
+  min-height: 120vh;
+  width: 100%;
+}
+
+.signup-brandName {
+  text-align: center;
+}

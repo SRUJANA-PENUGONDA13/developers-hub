@@ -1,0 +1,44 @@
+.top-nav {
+  height: 12vh;
+  background-color: var(--primary--color);
+  width: 100%;
+  padding: 1rem 4rem;
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text--primary--color);
+  border-bottom: 1px solid var(--gray--color);
+}
+
+.signin-link {
+  font-size: 1.2rem;
+}
+
+.top-nav .signin-link:hover {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.main-body {
+  gap: 8rem;
+  padding: 5rem 6rem;
+  margin-top: 12vh;
+  height: 88vh;
+  background-color: var(--primary--color);
+}
+
+.left-sec {
+  gap: 2rem;
+  font-family: "Sharp Sans No1", Sans-serif;
+  font-size: 3.5rem;
+  line-height: 5rem;
+  color: var(--text--primary--color);
+}
+
+.content-body {
+  font-size: 1.5rem;
+  letter-spacing: 0.09rem;
+  line-height: normal;
+  line-height: 2rem;
+}

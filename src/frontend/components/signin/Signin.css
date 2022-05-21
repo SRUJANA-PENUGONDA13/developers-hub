@@ -1,0 +1,15 @@
+.forgot-password-link {
+  font-size: 1rem;
+  padding-left: 0.9rem;
+}
+
+.credentials-handler {
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rememberMe {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}

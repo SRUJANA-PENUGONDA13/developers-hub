@@ -1,0 +1,64 @@
+.flex-dir-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-dir-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-center-box {
+  align-items: center;
+  justify-content: center;
+}
+
+.brandName {
+  font-family: "Sofia", sans-serif;
+  font-size: var(--text--xlarge);
+  text-shadow: 3px 3px 3px var(--gray--color);
+  color: var(--text--primary--color);
+}
+
+.primary-btn {
+  color: var(--text--primary--color);
+  background-color: var(--primary--color);
+  border-radius: 10px;
+  padding: 0.3rem;
+  text-align: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.auth-container {
+  background-color: var(--sigin--container--color);
+  border-radius: 1rem;
+  width: 26rem;
+  padding: 2rem;
+  gap: 1.5rem;
+  color: var(--primary--color);
+}
+
+.auth-header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.auth-body {
+  gap: 1rem;
+}
+
+.auth-field {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.auth-account-link {
+  text-align: center;
+  color: var(--primary--color);
+}
+
+.error {
+  color: var(--error--text--color);
+}
