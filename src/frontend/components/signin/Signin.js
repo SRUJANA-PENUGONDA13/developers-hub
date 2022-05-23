@@ -90,7 +90,10 @@ const Signin = () => {
               username: "srujanapenugonda@gmail.com",
               password: "srujana",
             });
-            signinHandler(loginDetails);
+            signinHandler({
+              username: "srujanapenugonda@gmail.com",
+              password: "srujana",
+            });
           }}
         >
           Login as Guest
