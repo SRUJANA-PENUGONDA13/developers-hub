@@ -1,0 +1,10 @@
+.signinPage-container {
+  background-color: var(--primary--color);
+  gap: 3rem;
+  height: 100vh;
+  width: 100%;
+}
+
+.signin-brandName {
+  text-align: center;
+}
