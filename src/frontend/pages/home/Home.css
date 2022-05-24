@@ -10,7 +10,8 @@
   border-bottom: 1px solid var(--gray--color);
 }
 
-.signin-link {
+.signin-link,
+.signout-link {
   font-size: 1.2rem;
 }
 
