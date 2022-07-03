@@ -1,0 +1,11 @@
+.create-post-modal {
+  right: 4rem;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: var(--primary--color);
+  background-color: #00000066;
+  z-index: 1;
+}

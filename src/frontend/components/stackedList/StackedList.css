@@ -1,0 +1,26 @@
+.slist-container {
+  width: 18vw;
+  padding: 1.3rem;
+  color: var(--text--primary--color);
+}
+
+.slist {
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+.slist li {
+  padding: 0.6rem;
+}
+
+.slist li:hover {
+  background-color: var(--text--primary--color);
+  color: var(--primary--color);
+}
+
+.list-icon {
+  width: 1rem;
+}
+.list-item {
+  gap: 1rem;
+}

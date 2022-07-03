@@ -25,6 +25,14 @@ const Signup = () => {
         containerStyle: { color: "red" },
         isClosable: true,
       });
+    } else {
+      toast({
+        title: "User Already exists",
+        status: "success",
+        duration: 9000,
+        containerStyle: { color: "red" },
+        isClosable: true,
+      });
     }
     navigate("/");
   };

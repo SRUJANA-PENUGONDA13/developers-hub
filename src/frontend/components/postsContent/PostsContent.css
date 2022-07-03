@@ -1,0 +1,14 @@
+.posts-middle-sec {
+  /* border: 2px solid var(--text--primary--color); */
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.posts-middle-sec::-webkit-scrollbar {
+  display: none;
+}
+
+.multiple-posts {
+  gap: 1rem;
+  margin-bottom: 10px;
+}

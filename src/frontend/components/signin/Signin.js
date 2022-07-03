@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { setAuthentication } from "../../redux/slices/authSlice";
+import { setUserDetails } from "../../redux/slices/userSlice";
 import { signinService } from "../../services/signinService";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import "./Signin.css";
 
 const Signin = () => {
@@ -22,9 +24,10 @@ const Signin = () => {
     setError(!encodedToken);
 
     if (!!encodedToken) {
-      localStorage.setItem("token", !!encodedToken);
+      localStorage.setItem("token", encodedToken);
       dispatch(setAuthentication(!!encodedToken));
-
+      dispatch(setUserDetails(foundUser));
+      navigate("/posts");
       toast({
         title: "Login Successful",
         status: "success",
@@ -32,8 +35,12 @@ const Signin = () => {
         containerStyle: { color: "red" },
         isClosable: true,
       });
-      navigate("/");
     }
+  };
+
+  const signoutHandler = () => {
+    dispatch(setAuthentication(false));
+    localStorage.removeItem("token");
   };
 
   return (
@@ -78,13 +85,13 @@ const Signin = () => {
             Forgot your Password?
           </Link>
         </div>
-        <button role="button" type="submit" className="primary-btn" to="#">
+        <button role="button" type="submit" className="primary-btn">
           Login
         </button>
         <Link
           role="button"
           className="auth-account-link text-decoration-none auth-field"
-          to="/"
+          to=""
           onClick={() => {
             setLoginDetails({
               username: "srujanapenugonda@gmail.com",

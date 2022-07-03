@@ -59,6 +59,23 @@
   color: var(--primary--color);
 }
 
+.container {
+  background-color: var(--primary--color);
+  color: white;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.5fr 3fr;
+  grid-gap: 2rem;
+  border: 2px solid gray;
+}
+
+.inner-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 2rem;
+  overflow-y: scroll;
+}
+
 .error {
   color: var(--error--text--color);
 }

@@ -1,0 +1,19 @@
+.post-btn {
+  background-color: var(--text--primary--color);
+  padding: 0.5rem;
+  color: var(--primary--color);
+  border-radius: 10px;
+  text-align: center;
+  width: 8rem;
+  margin-left: 1.3rem;
+}
+
+.posts-brandName {
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 3rem 1rem;
+}
+
+.posts-nav-links {
+  padding-left: 3rem;
+}
