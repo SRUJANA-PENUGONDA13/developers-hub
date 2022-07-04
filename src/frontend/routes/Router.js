@@ -16,42 +16,12 @@ const Router = () => {
       <Route path="/" element={<Home />}></Route>
       <Route exact path="/signin" element={<SigninPage />}></Route>
       <Route exact path="/signup" element={<SignupPage />}></Route>
-      <Route
-        exact
-        path="/posts"
-        element={
-          <PrivateRoute>
-            <Posts />
-          </PrivateRoute>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/explore"
-        element={
-          <PrivateRoute>
-            <Explore />
-          </PrivateRoute>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/bookmark"
-        element={
-          <PrivateRoute>
-            <Bookmark />
-          </PrivateRoute>
-        }
-      ></Route>
-      <Route
-        exact
-        path="/profile"
-        element={
-          <PrivateRoute>
-            <Profile />
-          </PrivateRoute>
-        }
-      ></Route>
+      <Route element={<PrivateRoute />}>
+        <Route exact path="/posts" element={<Posts />}></Route>
+        <Route exact path="/explore" element={<Explore />}></Route>
+        <Route exact path="/bookmark" element={<Bookmark />}></Route>
+        <Route exact path="/profile" element={<Profile />}></Route>
+      </Route>
     </Routes>
   );
 };
