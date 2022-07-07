@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
-import { signupService } from "../../services/signupService";
+import { signupService } from "../../services";
 import "./Signup.css";
 
 const Signup = () => {
@@ -20,6 +20,14 @@ const Signup = () => {
       localStorage.setItem("token", encodedToken);
       toast({
         title: "Signup Successful",
+        status: "success",
+        duration: 9000,
+        containerStyle: { color: "red" },
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "User Already exists",
         status: "success",
         duration: 9000,
         containerStyle: { color: "red" },

@@ -10,13 +10,14 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "The JavaScript ecosystem has been on fire since Node.js and npm appeared. There's always a package for everything because folks have been YOLO-publishing whatever they please. It's a vibrant and enabling ecosystem feeling like the wild wild west. And of course, there are pros and cons to countless dependencies.",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
+    name: "adarshbalika",
+    username: "adarsh@gmail.com",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     comments: [
@@ -43,14 +44,28 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "JavaScript is the world's most popular programming language. JavaScript is the programming language of the Web. JavaScript is easy to learn.",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: "ca9568da-4a29-4f1c-b62f-01b2922eadc9",
+          firstName: "Srujana",
+          lastName: "Penugonda",
+          username: "srujanapenugonda@gmail.com",
+          password: "srujana",
+          createdAt: "2022-07-05T01:22:49+05:30",
+          updatedAt: "2022-07-05T01:22:49+05:30",
+          followers: [],
+          following: [],
+          bookmarks: [],
+          id: "2",
+        },
+      ],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
-
+    name: "pavani penugonda",
+    username: "pavani@gmail.com",
     comments: [
       {
         _id: uuid(),
@@ -73,5 +88,47 @@ export const posts = [
     ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
+  },
+  {
+    _id: "82ac7a56-0b02-4415-9e8a-b9a36c8137f6",
+    content:
+      "StrictMode is a React Developer Tool primarily used for highlighting possible problems in a web application. It activates additional deprecation checks and warnings for its child components. One of the reasons for its popularity is the fact that it provides visual feedback (warning/error messages) whenever the React guidelines and recommended practices are not followed. Just like the React Fragment, the React StrictMode Component does not render any visible UI. ",
+    likes: {
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: "ca9568da-4a29-4f1c-b62f-01b2922eadc9",
+          firstName: "pavan",
+          lastName: "Penugonda",
+          username: "pavan@gmail.com",
+          password: "pavan",
+          createdAt: "2022-07-05T01:22:49+05:30",
+          updatedAt: "2022-07-05T01:22:49+05:30",
+          followers: [],
+          following: [],
+          bookmarks: [],
+          id: "2",
+        },
+        {
+          _id: "ca9568da-4a29-4f1c-b62f-01b2922eadc9",
+          firstName: "sathvik",
+          lastName: "Penugonda",
+          username: "sathvik@gmail.com",
+          password: "sathvik",
+          createdAt: "2022-07-05T01:22:49+05:30",
+          updatedAt: "2022-07-05T01:22:49+05:30",
+          followers: [],
+          following: [],
+          bookmarks: [],
+          id: "2",
+        },
+      ],
+      dislikedBy: [],
+    },
+    name: "sowji penugonda",
+    username: "sowji@gmail.com",
+    createdAt: "2022-07-06T11:49:50+05:30",
+    updatedAt: "2022-07-06T11:49:50+05:30",
+    id: "3",
   },
 ];

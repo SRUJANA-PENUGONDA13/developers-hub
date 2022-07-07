@@ -1,0 +1,31 @@
+.create-post-container {
+  background-color: var(--text--primary--color);
+  width: 34rem;
+  border: 2px solid var(--text--primary--color);
+  padding: 1rem;
+  margin: 3rem 0rem 0rem 8rem;
+  height: 22rem;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+.create-post-footer {
+  justify-content: space-between;
+}
+
+.create-post-media,
+.create-post-btns {
+  gap: 1rem;
+}
+
+.post-input {
+  border: none;
+}
+
+.post-input:focus {
+  outline: none;
+}
+
+.cp-title {
+  font-size: 1.3rem;
+}

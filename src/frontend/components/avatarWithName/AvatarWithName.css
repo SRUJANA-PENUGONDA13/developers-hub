@@ -1,0 +1,15 @@
+.post-user-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.post-user-designation {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.avatarWithName-container {
+  gap: 1rem;
+  align-items: center;
+  color: var(--primary--color);
+}

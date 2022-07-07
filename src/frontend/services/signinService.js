@@ -14,7 +14,7 @@ const signinService = async ({ username, password }) => {
 
     return { foundUser, encodedToken };
   } catch (e) {
-    console.log("Error: ", e);
+    console.error("Error: ", e);
     return {};
   }
 };

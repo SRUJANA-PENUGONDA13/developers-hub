@@ -1,0 +1,19 @@
+.usersList-container {
+  gap: 1rem;
+  width: fit-content;
+  border: 1px solid gray;
+  margin-top: 3rem;
+  background-color: var(--text--primary--color);
+  padding: 1rem;
+}
+
+.userList-details {
+  align-items: center;
+  gap: 1rem;
+}
+
+.follow-btn {
+  background-color: var(--primary--color) !important;
+  color: var(--text--primary--color);
+  border-radius: 8px;
+}

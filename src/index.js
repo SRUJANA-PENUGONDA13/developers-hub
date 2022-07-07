@@ -12,14 +12,13 @@ import App from "./App";
 makeServer();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ChakraProvider>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    </ChakraProvider>
-  </React.StrictMode>,
+  <ChakraProvider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </ChakraProvider>,
+
   document.getElementById("root")
 );

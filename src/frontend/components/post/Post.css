@@ -1,0 +1,50 @@
+.post-container {
+  padding: 10px;
+  width: 100%;
+  gap: 1.3rem;
+  border-radius: 10px;
+  color: var(--primary--color);
+  background-color: var(--text--primary--color);
+}
+
+.post-container:hover {
+  background-color: gainsboro;
+}
+
+.post-nav-sec {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-control .fa-ellipsis-v {
+  font-size: 1.5rem;
+}
+
+.post-nav-left-sec {
+  gap: 10px;
+}
+
+.post-main-sec {
+  font-size: 0.88rem;
+  padding: 0rem 1rem;
+}
+
+.post-solid-like-btn .fa-heart {
+  font-weight: 900;
+}
+
+.post-solid-like-btn,
+.post-like-btn {
+  gap: 10px;
+  text-align: center;
+  font-weight: 600;
+  width: 1rem;
+}
+
+.post-footer-sec {
+  justify-content: space-between;
+}
+
+.post-footer-sec .fa-regular {
+  font-size: 1.5rem;
+}

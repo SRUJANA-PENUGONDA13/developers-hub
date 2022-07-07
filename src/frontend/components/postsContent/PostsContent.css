@@ -1,0 +1,13 @@
+.posts-middle-sec {
+  border-radius: 10px;
+  gap: 1.3rem;
+}
+
+.posts-middle-sec::-webkit-scrollbar {
+  display: none;
+}
+
+.multiple-posts {
+  gap: 1rem;
+  margin-bottom: 10px;
+}

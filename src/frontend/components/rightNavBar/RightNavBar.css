@@ -1,0 +1,12 @@
+.right-nav .signout-link {
+  width: 6.5rem;
+  margin-left: 10rem;
+  margin-top: 1rem;
+  padding: 5px;
+  text-align: center;
+}
+
+.right-nav .signout-link:hover {
+  border: 2px solid white;
+  border-radius: 10px;
+}
