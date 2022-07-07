@@ -8,7 +8,9 @@ const Profile = () => {
       <LeftNavBar />
       <div className="inner-container">
         <ProfileContent />
-        <RightNavBar />
+        <div className="right-nav">
+          <RightNavBar />
+        </div>
       </div>
     </div>
   );

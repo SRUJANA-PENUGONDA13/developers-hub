@@ -76,6 +76,12 @@
   overflow-y: scroll;
 }
 
+.right-nav {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
 .error {
   color: var(--error--text--color);
 }

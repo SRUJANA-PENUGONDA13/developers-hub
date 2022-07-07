@@ -7,7 +7,9 @@ const Posts = () => {
       <LeftNavBar />
       <div className="inner-container">
         <PostsContent />
-        <RightNavBar />
+        <div className="right-nav">
+          <RightNavBar />
+        </div>
       </div>
     </div>
   );

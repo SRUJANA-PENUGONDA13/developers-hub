@@ -8,7 +8,9 @@ const Explore = () => {
       <LeftNavBar />
       <div className="inner-container">
         <ExploreContent />
-        <RightNavBar />
+        <div className="right-nav">
+          <RightNavBar />
+        </div>
       </div>
     </div>
   );

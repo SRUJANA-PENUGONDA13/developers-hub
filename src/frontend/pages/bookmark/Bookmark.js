@@ -8,7 +8,9 @@ const Bookmark = () => {
       <LeftNavBar />
       <div className="inner-container">
         <BookMarkContent />
-        <RightNavBar />
+        <div className="right-nav">
+          <RightNavBar />
+        </div>
       </div>
     </div>
   );
