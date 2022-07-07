@@ -1,7 +1,6 @@
 .posts-middle-sec {
-  /* border: 2px solid var(--text--primary--color); */
   border-radius: 10px;
-  gap: 20px;
+  gap: 1.3rem;
 }
 
 .posts-middle-sec::-webkit-scrollbar {

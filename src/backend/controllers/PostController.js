@@ -65,6 +65,7 @@ export const getAllUserPostsHandler = function (schema, request) {
 
 export const createPostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  const name = user.firstName + user.lastName ? user.lastName : "";
   try {
     if (!user) {
       return new Response(
@@ -86,6 +87,7 @@ export const createPostHandler = function (schema, request) {
         likedBy: [],
         dislikedBy: [],
       },
+      name: name,
       username: user.username,
       createdAt: formatDate(),
       updatedAt: formatDate(),
@@ -155,6 +157,7 @@ export const editPostHandler = function (schema, request) {
 
 export const likePostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+
   try {
     if (!user) {
       return new Response(
@@ -169,18 +172,21 @@ export const likePostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     const post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.likes.likedBy.some((currUser) => currUser._id === user._id)) {
-      return new Response(
-        400,
-        {},
-        { errors: ["Cannot like a post that is already liked. "] }
-      );
+    if (
+      post.likes.likedBy.some((currUser) => currUser.username === user.username)
+    ) {
+      post.likes.likeCount -= 1;
+      const likedUsers = [];
+      post.likes.likedBy.forEach((userDetails) => {
+        if (userDetails.username !== user.username)
+          likedUsers.push(userDetails);
+      });
+      post.likes.likedBy = likedUsers;
+    } else {
+      post.likes.likeCount += 1;
+      post.likes.likedBy.push(user);
     }
-    post.likes.dislikedBy = post.likes.dislikedBy.filter(
-      (currUser) => currUser._id !== user._id
-    );
-    post.likes.likeCount += 1;
-    post.likes.likedBy.push(user);
+
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {

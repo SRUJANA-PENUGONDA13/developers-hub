@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
-import { signupService } from "../../services/signupService";
+import { signupService } from "../../services";
 import "./Signup.css";
 
 const Signup = () => {

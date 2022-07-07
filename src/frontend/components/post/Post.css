@@ -29,6 +29,18 @@
   padding: 0rem 1rem;
 }
 
+.post-solid-like-btn .fa-heart {
+  font-weight: 900;
+}
+
+.post-solid-like-btn,
+.post-like-btn {
+  gap: 10px;
+  text-align: center;
+  font-weight: 600;
+  width: 1rem;
+}
+
 .post-footer-sec {
   justify-content: space-between;
 }

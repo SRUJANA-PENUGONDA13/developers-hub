@@ -3,7 +3,7 @@ import { Input, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { setAuthentication } from "../../redux/slices/authSlice";
 import { setUserDetails } from "../../redux/slices/userSlice";
-import { signinService } from "../../services/signinService";
+import { signinService } from "../../services";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Signin.css";

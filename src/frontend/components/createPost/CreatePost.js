@@ -2,7 +2,7 @@ import { AvatarWithName } from "../index";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addPost } from "../../services/posts/addPost";
+import { addPost } from "../../services";
 import { setDisplayCreatePost, savePosts } from "../../redux/slices/postsSlice";
 
 import "./CreatePost.css";
