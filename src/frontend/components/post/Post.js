@@ -6,11 +6,12 @@ import { savePosts } from "../../redux/slices/postsSlice";
 import "./Post.css";
 
 const Post = ({ postDetails }) => {
-  const { name, content, likes } = postDetails;
+  const { name, content, likes, username } = postDetails;
   const [likeState, setLikeState] = useState(false);
   const [totalLikes, setTotalLikes] = useState("");
   const { userDetails } = useSelector((state) => state.user);
   const { posts } = useSelector((store) => store.posts);
+  const postOwner = { firstName: name, username: username };
 
   const updateLikes = (likesDetails) => {
     if (likesDetails.likeCount > 0) {
@@ -56,7 +57,7 @@ const Post = ({ postDetails }) => {
     <div className="post-container flex-dir-col">
       <div className="post-nav-sec flex-dir-row">
         <div className="post-nav-left-sec flex-dir-row">
-          <AvatarWithName userName={name} />
+          <AvatarWithName user={postOwner} />
         </div>
         <button className="post-control">
           <i class="fa fa-ellipsis-v" aria-hidden="true"></i>

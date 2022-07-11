@@ -3,8 +3,15 @@
   width: fit-content;
   border: 1px solid gray;
   margin-top: 3rem;
+  max-height: 17rem;
   background-color: var(--text--primary--color);
   padding: 1rem;
+  overflow-y: auto;
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+  background-color: var(--light-gray);
 }
 
 .userList-details {
