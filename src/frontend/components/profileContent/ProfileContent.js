@@ -8,7 +8,9 @@ import "./ProfileContent.css";
 
 const ProfileContent = () => {
   const { username } = useParams();
-
+  const { displayProfileModal, userDetails, profileUserDetails } = useSelector(
+    (state) => state.user
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {

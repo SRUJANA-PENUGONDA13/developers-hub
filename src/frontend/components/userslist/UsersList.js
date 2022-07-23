@@ -11,6 +11,7 @@ import { followUser } from "../../services";
 import "./UsersList.css";
 
 const UsersList = ({ users }) => {
+  console.log("User List");
   const dispatch = useDispatch();
   const followHandler = async (user, value) => {
     const followData = await followUser(user.username);
@@ -25,7 +26,9 @@ const UsersList = ({ users }) => {
       {users.map((user, index) => {
         return (
           <div className="userList-details flex-dir-row">
-            <AvatarWithName user={user} />
+            <div className="user-list-avatar">
+              <AvatarWithName user={user} />
+            </div>
             <Button
               name={user._id}
               className="follow-btn"

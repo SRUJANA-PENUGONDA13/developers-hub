@@ -10,3 +10,7 @@
   background-color: #00000066;
   z-index: 1;
 }
+
+.profile-list {
+  gap: 1rem;
+}

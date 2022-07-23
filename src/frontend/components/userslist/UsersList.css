@@ -3,7 +3,7 @@
   width: fit-content;
   border: 1px solid gray;
   margin-top: 3rem;
-  max-height: 17rem;
+  max-height: 14rem;
   background-color: var(--text--primary--color);
   padding: 1rem;
   overflow-y: auto;
@@ -17,6 +17,10 @@
 .userList-details {
   align-items: center;
   gap: 1rem;
+}
+
+.user-list-avatar {
+  width: 10rem;
 }
 
 .follow-btn {

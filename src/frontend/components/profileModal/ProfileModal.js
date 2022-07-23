@@ -39,7 +39,7 @@ const ProfileModal = ({ user }) => {
             {(profileModalType === "following" ||
               profileModalType === "followers") &&
               users.length > 0 && (
-                <div className="modal-inner-container profile-list">
+                <div className="modal-inner-container profile-list flex-dir-col">
                   {users.map((user) => {
                     return <AvatarWithName user={user} />;
                   })}

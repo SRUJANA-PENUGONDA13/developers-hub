@@ -14,9 +14,6 @@ import { ProfileModal } from "../../components";
 import "./UserProfile.css";
 
 const UserProfile = () => {
-  const [followersCount, setFollowersCount] = useState(0);
-  const [followingCount, setFollowingCount] = useState(0);
-  const [postsCount, setPostsCount] = useState(0);
   const [posts, setPosts] = useState([]);
   const [actionBtn, setActionBtn] = useState("Edit Profile");
   const { displayProfileModal, userDetails, profileUserDetails } = useSelector(
@@ -77,21 +74,21 @@ const UserProfile = () => {
           setActionBtn("Edit Profile");
         else setActionBtn("Follow");
       }
-      setFollowersCount(profileUserDetails.followers.length);
-      setFollowingCount(profileUserDetails.following.length);
+
       (async () => {
         const userPosts = await getSpecificUserPosts(
           profileUserDetails.username
         );
         setPosts(userPosts);
-        setPostsCount(userPosts.length);
       })();
     }
   }, [profileUserDetails]);
 
   return (
     <>
-      {displayProfileModal && <ProfileModal user={profileUserDetails} />}
+      {displayProfileModal && profileUserDetails && (
+        <ProfileModal user={profileUserDetails} />
+      )}
       <div className="profile-details flex-dir-col">
         <div className="user-details flex-dir-col">
           <Avatar
@@ -126,11 +123,11 @@ const UserProfile = () => {
                 updateProfileModal("following");
               }}
             >
-              <b>{followingCount}</b>
+              <b>{profileUserDetails?.following?.length}</b>
               <p className="status-label">Following</p>
             </div>
             <div className="posts flex-dir-col">
-              <b>{postsCount}</b>
+              <b>{posts?.length}</b>
               <p className="status-label">Posts</p>
             </div>
             <div
@@ -139,7 +136,7 @@ const UserProfile = () => {
                 updateProfileModal("followers");
               }}
             >
-              <b>{followersCount}</b>
+              <b>{profileUserDetails?.followers?.length}</b>
               <p className="status-label">Followers</p>
             </div>
           </div>
