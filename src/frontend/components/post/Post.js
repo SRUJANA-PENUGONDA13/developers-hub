@@ -1,16 +1,22 @@
 import { AvatarWithName } from "../index";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { updateLikedPosts } from "../../services";
 import { useSelector } from "react-redux";
 import { savePosts } from "../../redux/slices/postsSlice";
+import { getUserDetails } from "../../services";
+import { useOutsideClickHandler } from "../../custom-hooks/OutsideClickHandler";
 import "./Post.css";
 
 const Post = ({ postDetails }) => {
-  const { name, content, likes } = postDetails;
+  const { content, likes, username } = postDetails;
   const [likeState, setLikeState] = useState(false);
   const [totalLikes, setTotalLikes] = useState("");
+  const [openMenu, setOpenMenu] = useState(false);
   const { userDetails } = useSelector((state) => state.user);
-  const { posts } = useSelector((store) => store.posts);
+  const [postOwner, setPostOwner] = useState({});
+
+  const ref = useRef();
+  const { resetMenu } = useOutsideClickHandler(ref);
 
   const updateLikes = (likesDetails) => {
     if (likesDetails.likeCount > 0) {
@@ -52,16 +58,66 @@ const Post = ({ postDetails }) => {
     updateLikes(likes);
   }, [likes]);
 
+  useEffect(() => {
+    if (resetMenu) {
+      setOpenMenu(false);
+    }
+  }, [resetMenu]);
+
+  useEffect(() => {
+    (async () => {
+      const userData = await getUserDetails(username);
+      if (userData) {
+        setPostOwner(userData);
+      }
+    })();
+  }, [postDetails, userDetails]);
+
   return (
     <div className="post-container flex-dir-col">
       <div className="post-nav-sec flex-dir-row">
         <div className="post-nav-left-sec flex-dir-row">
-          <AvatarWithName userName={name} />
+          <AvatarWithName user={postOwner} />
         </div>
-        <button className="post-control">
-          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-        </button>
+        <div className="ellipsis-icon">
+          <button className="post-control">
+            <i
+              class="fa fa-ellipsis-v"
+              aria-hidden="true"
+              onClick={() => setOpenMenu(!openMenu)}
+            ></i>
+          </button>
+          {openMenu && (
+            <>
+              <div className="post-menu flex-dir-col" ref={ref}>
+                <div>
+                  <button className="post-control post-menu-btn flex-dir-row">
+                    <i class="fa-regular fa-bookmark"></i>
+                    Save post
+                  </button>
+                </div>
+                {username === userDetails.username && (
+                  <>
+                    <div>
+                      <button className="post-control post-menu-btn flex-dir-row">
+                        <i class="fa-regular fa-edit"></i>
+                        Edit Post
+                      </button>
+                    </div>
+                    <div>
+                      <button className="post-control post-menu-btn flex-dir-row">
+                        <i class="fa-regular fa-trash-alt"></i>
+                        Delete Post
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
+
       <div className="post-main-sec">
         <p>{content}</p>
       </div>
@@ -86,8 +142,8 @@ const Post = ({ postDetails }) => {
         <button className="post-comment-btn">
           <i className="fa-regular fa-comment"></i>
         </button>
-        <button className="post-bookmark-btn">
-          <i className="fa-regular fa-bookmark"></i>
+        <button className="post-share-btn">
+          <i className="fa-solid fa-share 3x"></i>
         </button>
       </div>
     </div>

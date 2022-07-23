@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   setHomePage,
   setExplorePage,
@@ -11,6 +10,7 @@ import "./StackedList.css";
 
 const StackedList = () => {
   const dispatch = useDispatch();
+  const { userDetails } = useSelector((store) => store.user);
 
   return (
     <div className="slist-container">
@@ -53,7 +53,7 @@ const StackedList = () => {
         </li>
         <li>
           <Link
-            to="/profile"
+            to={`/profile/${userDetails?.username}`}
             className="list-item text-decoration-none flex-dir-row"
             onClick={() => dispatch(setProfilePage(true))}
           >

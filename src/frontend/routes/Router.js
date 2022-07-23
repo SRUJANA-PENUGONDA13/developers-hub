@@ -20,7 +20,7 @@ const Router = () => {
         <Route exact path="/posts" element={<Posts />}></Route>
         <Route exact path="/explore" element={<Explore />}></Route>
         <Route exact path="/bookmark" element={<Bookmark />}></Route>
-        <Route exact path="/profile" element={<Profile />}></Route>
+        <Route exact path="/profile/:username" element={<Profile />}></Route>
       </Route>
     </Routes>
   );

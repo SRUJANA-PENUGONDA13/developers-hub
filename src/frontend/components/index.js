@@ -14,3 +14,6 @@ export { BookMarkContent } from "./bookMarkContent/BookMarkContent";
 export { ExploreContent } from "./exploreContent/ExploreContent";
 export { ProfileContent } from "./profileContent/ProfileContent";
 export { PrivateRoute } from "./privateRoute/PrivateRoute";
+export { UserProfile } from "./userProfile/UserProfile";
+export { ProfileModal } from "./profileModal/ProfileModal";
+export { EditProfile } from "./editProfile/EditProfile";

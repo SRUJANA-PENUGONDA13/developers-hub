@@ -22,7 +22,7 @@ const CreatePost = (props) => {
     <div className="create-post-container flex-dir-col">
       <h1 className="cp-title">Create a post</h1>
       <hr></hr>
-      <AvatarWithName userName={userDetails.firstName} />
+      <AvatarWithName user={userDetails} />
       <textarea
         className="post-input"
         placeholder="What do you want to talk about ?"

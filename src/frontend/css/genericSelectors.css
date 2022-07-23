@@ -76,6 +76,10 @@
   overflow-y: scroll;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .right-nav {
   position: sticky;
   top: 0;

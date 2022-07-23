@@ -1,0 +1,16 @@
+.profile-modal {
+  right: 0rem;
+  top: 0rem;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  color: var(--primary--color);
+  background-color: #00000066;
+  z-index: 1;
+}
+
+.profile-list {
+  gap: 1rem;
+}

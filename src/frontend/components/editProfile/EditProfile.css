@@ -1,0 +1,48 @@
+.modal-inner-container {
+  position: absolute;
+  top: 10rem;
+  left: 19rem;
+  background-color: var(--text--primary--color);
+  width: 25rem;
+  border: 2px solid var(--text--primary--color);
+  padding: 1rem;
+  margin: 3rem 0rem 0rem 8rem;
+  height: fit-content;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+.edit-profile {
+  justify-content: right;
+  color: var(--text--primary--color);
+  background-color: var(--primary--color);
+}
+
+.edit-label {
+  font-weight: 600;
+  width: 4rem;
+}
+
+.edit-field {
+  align-items: flex-start;
+}
+
+.edit-input {
+  width: 19rem;
+  background-color: var(--text--primary--color);
+  color: var(--primary--color);
+  padding: 10px;
+}
+
+.edit-input:hover {
+  border: 1px solid var(--primary--color);
+}
+.update-btn {
+  position: relative;
+  left: 18rem;
+  width: fit-content;
+  background-color: var(--text--primary--color) !important;
+  color: var(--primary--color);
+
+  border-radius: 8px;
+}
