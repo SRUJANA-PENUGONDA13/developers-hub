@@ -60,6 +60,7 @@ export const addPostCommentHandler = function (schema, request) {
       votes: 0,
       createdAt: formatDate(),
       updatedAt: formatDate(),
+      replies: [],
     };
     const post = schema.posts.findBy({ id: postId }).attrs;
     post.comments.push(comment);
@@ -101,13 +102,7 @@ export const editPostCommentHandler = function (schema, request) {
     const commentIndex = post.comments.findIndex(
       (comment) => comment._id === commentId
     );
-    if (post.comments[commentIndex].user.username !== user.username) {
-      return new Response(
-        400,
-        {},
-        { errors: ["Cannot edit a comment doesn't belong to the User."] }
-      );
-    }
+
     if (!!editComment) {
       post.comments[commentIndex] = {
         ...post.comments[commentIndex],
