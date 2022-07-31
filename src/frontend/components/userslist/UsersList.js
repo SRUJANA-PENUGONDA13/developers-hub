@@ -11,7 +11,6 @@ import { followUser } from "../../services";
 import "./UsersList.css";
 
 const UsersList = ({ users }) => {
-  console.log("User List");
   const dispatch = useDispatch();
   const followHandler = async (user, value) => {
     const followData = await followUser(user.username);

@@ -1,0 +1,118 @@
+.comment-card {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  color: var(--primary--color);
+  gap: 0.5rem;
+  background-color: var(--comment--card--background);
+  height: fit-content;
+}
+
+.comment-nav {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-control .fa-ellipsis-v {
+  font-size: 1.5rem;
+  padding-right: 1rem;
+}
+
+.ellipsis-icon {
+  position: relative;
+}
+
+.comment-menu {
+  position: absolute;
+  border: 1px solid var(--text--primary--color);
+  background-color: var(--primary--color);
+  color: var(--text--primary--color);
+  width: 9rem;
+  gap: 0.8rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 1rem;
+}
+
+.comment-menu-btn {
+  gap: 10px;
+  align-items: center;
+  justify-self: center;
+}
+
+.comment-menu-btn:hover {
+  color: var(--comment-menu-links);
+}
+
+.comment-solid-like-btn,
+.comment-like-btn {
+  gap: 8px;
+  text-align: center;
+  align-items: center;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.comment-solid-like-btn .fa-heart {
+  font-weight: 900;
+}
+
+.comment-footer {
+  gap: 1rem;
+  padding: 0rem 1rem;
+}
+
+.reply-box,
+.edit-box {
+  gap: 1rem;
+  margin-left: 1rem;
+  width: 95%;
+}
+
+.reply-btn-controls,
+.edit-btn-controls {
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.reply-text,
+.edit-text {
+  border: 1.5px solid var(--primary--color) !important;
+}
+
+.comment-text {
+  border-radius: unset !important;
+  border: 1.5px solid var(--primary--color) !important;
+}
+.comment-post-btn {
+  height: 2.5rem !important;
+  border-radius: unset !important;
+  background-color: var(--primary--color) !important;
+  color: var(--text--primary--color) !important;
+}
+
+.comment-controls {
+  padding-top: 0.2rem;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.comment-nav * .post-user-name {
+  font-size: 0.8rem;
+}
+
+.comment-nav * .post-user-designation {
+  font-size: 0.6rem;
+}
+
+.comment-nav * .avatar {
+  width: 2.8rem;
+}
+
+.comment-main {
+  padding: 0rem 4rem;
+}
+
+.comment-footer {
+  padding: 0rem 4rem;
+}

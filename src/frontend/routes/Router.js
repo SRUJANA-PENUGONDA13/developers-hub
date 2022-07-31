@@ -8,6 +8,7 @@ import {
   Explore,
   Bookmark,
   Profile,
+  SinglePost,
 } from "../pages";
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
         <Route exact path="/explore" element={<Explore />}></Route>
         <Route exact path="/bookmark" element={<Bookmark />}></Route>
         <Route exact path="/profile/:username" element={<Profile />}></Route>
+        <Route exact path="/post/:postId" element={<SinglePost />}></Route>
       </Route>
     </Routes>
   );

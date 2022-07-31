@@ -17,3 +17,5 @@ export { PrivateRoute } from "./privateRoute/PrivateRoute";
 export { UserProfile } from "./userProfile/UserProfile";
 export { ProfileModal } from "./profileModal/ProfileModal";
 export { EditProfile } from "./editProfile/EditProfile";
+export { CommentCard } from "./commentCard/CommentCard";
+export { CommentList } from "./commentList/CommentList";

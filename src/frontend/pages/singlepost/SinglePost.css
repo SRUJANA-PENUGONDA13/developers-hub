@@ -1,0 +1,14 @@
+.middle-sec {
+  background-color: var(--text--primary--color);
+  border: 1px solid var(--text--primary--color);
+  height: fit-content;
+  margin: 3rem 0rem;
+  border-radius: 5px;
+}
+.comment-sec-divider {
+  border-color: var(--primary--color) !important;
+}
+
+.divider {
+  width: 20px !important;
+}
