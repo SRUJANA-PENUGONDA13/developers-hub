@@ -73,6 +73,11 @@
   font-size: 1.3rem;
 }
 
+.post-comment-btn {
+  gap: 8px;
+  font-weight: 600;
+}
+
 .post-footer-sec {
   justify-content: space-between;
   padding: 0rem 1rem;

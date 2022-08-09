@@ -23,21 +23,21 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
+        user: {
+          firstName: "Karthik",
+          lastName: "Bandi",
+          username: "karthikbandi@gmail.com",
         },
+        replies: [],
+        content: "Interesting",
+        votes: 0,
       },
       {
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        user: { firstName: "Ram", lastName: "Raju", username: "ram@gmail.com" },
+        content: "Wow!",
+        votes: 0,
+        replies: [],
       },
     ],
   },
@@ -69,21 +69,25 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
+        user: {
+          firstName: "Charan",
+          lastName: "Ghosh",
+          username: "charanghosh@gmail.com",
         },
+        replies: [],
+        content: "Interesting",
+        votes: 0,
       },
       {
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
+        user: {
+          firstName: "Srujana",
+          lastName: "Penugonda",
+          username: "srujanapenugonda@gmail.com",
         },
+        content: "Wow!",
+        replies: [],
+        votes: 0,
       },
     ],
     createdAt: formatDate(),
@@ -129,6 +133,40 @@ export const posts = [
     username: "suhashdugar@gmail.com",
     createdAt: "2022-07-06T11:49:50+05:30",
     updatedAt: "2022-07-06T11:49:50+05:30",
+    comments: [
+      {
+        _id: "7e060580-0009-48a9-8040-37b8505e0adf",
+        content: "Nice content",
+        votes: 0,
+        user: {
+          username: "srujanapenugonda@gmail.com",
+          firstName: "srujana",
+          lastName: "penugonda",
+        },
+        replies: [
+          {
+            _id: "7e060580-0009-48a9-6040-37b8505e0adf",
+            content: "Awesome Content",
+            user: {
+              username: "pavani@gmail.com",
+              firstName: "pavani",
+              lastName: "penugonda",
+            },
+          },
+        ],
+      },
+      {
+        _id: "7e060580-0009-48a5-8040-37b8505e0adf",
+        content: "Nice content",
+        votes: 0,
+        user: {
+          username: "pravingade@gmail.com",
+          firstName: "Pravin",
+          lastName: "Gade",
+        },
+        replies: [],
+      },
+    ],
     id: "3",
   },
 ];

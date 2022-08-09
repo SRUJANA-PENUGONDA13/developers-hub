@@ -7,7 +7,6 @@ import "./AvatarWithName.css";
 
 const AvatarWithName = ({ user }) => {
   const name = user?.firstName + " " + user?.lastName;
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,12 +19,16 @@ const AvatarWithName = ({ user }) => {
 
   return (
     <React.Fragment>
-      {user && (
+      {user.firstName && (
         <div
           className="avatarWithName-container flex-dir-row cursor-pointer"
           onClick={() => avatarHandler()}
         >
-          <Avatar name={name} src={`${user?.pic ? user.pic : ""}`} />
+          <Avatar
+            className="avatar"
+            name={name}
+            src={`${user?.pic ? user.pic : ""}`}
+          />
           <div className="post-user-details flex-dir-col ">
             <span className="post-user-name">{name}</span>
             <span className="post-user-designation">Developer</span>

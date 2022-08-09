@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { savePosts } from "../../redux/slices/postsSlice";
 import { getUserDetails } from "../../services";
 import { useOutsideClickHandler } from "../../custom-hooks/OutsideClickHandler";
+import { useNavigate } from "react-router-dom";
+
 import "./Post.css";
 
 const Post = ({ postDetails }) => {
@@ -17,6 +19,7 @@ const Post = ({ postDetails }) => {
 
   const ref = useRef();
   const { resetMenu } = useOutsideClickHandler(ref);
+  const navigate = useNavigate();
 
   const updateLikes = (likesDetails) => {
     if (likesDetails.likeCount > 0) {
@@ -74,79 +77,91 @@ const Post = ({ postDetails }) => {
   }, [postDetails, userDetails]);
 
   return (
-    <div className="post-container flex-dir-col">
-      <div className="post-nav-sec flex-dir-row">
-        <div className="post-nav-left-sec flex-dir-row">
-          <AvatarWithName user={postOwner} />
-        </div>
-        <div className="ellipsis-icon">
-          <button className="post-control">
-            <i
-              class="fa fa-ellipsis-v"
-              aria-hidden="true"
-              onClick={() => setOpenMenu(!openMenu)}
-            ></i>
-          </button>
-          {openMenu && (
-            <>
-              <div className="post-menu flex-dir-col" ref={ref}>
-                <div>
-                  <button className="post-control post-menu-btn flex-dir-row">
-                    <i class="fa-regular fa-bookmark"></i>
-                    Save post
-                  </button>
+    userDetails && (
+      <div className="post-container flex-dir-col">
+        <div className="post-nav-sec flex-dir-row">
+          <div className="post-nav-left-sec flex-dir-row">
+            <AvatarWithName user={postOwner} />
+          </div>
+          <div className="ellipsis-icon">
+            <button className="post-control">
+              <i
+                class="fa fa-ellipsis-v"
+                aria-hidden="true"
+                onClick={() => setOpenMenu(!openMenu)}
+              ></i>
+            </button>
+            {openMenu && (
+              <>
+                <div className="post-menu flex-dir-col" ref={ref}>
+                  <div>
+                    <button className="post-control post-menu-btn flex-dir-row">
+                      <i class="fa-regular fa-bookmark"></i>
+                      Save post
+                    </button>
+                  </div>
+                  {username === userDetails.username && (
+                    <>
+                      <div>
+                        <button className="post-control post-menu-btn flex-dir-row">
+                          <i class="fa-regular fa-edit"></i>
+                          Edit Post
+                        </button>
+                      </div>
+                      <div>
+                        <button className="post-control post-menu-btn flex-dir-row">
+                          <i class="fa-regular fa-trash-alt"></i>
+                          Delete Post
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
-                {username === userDetails.username && (
-                  <>
-                    <div>
-                      <button className="post-control post-menu-btn flex-dir-row">
-                        <i class="fa-regular fa-edit"></i>
-                        Edit Post
-                      </button>
-                    </div>
-                    <div>
-                      <button className="post-control post-menu-btn flex-dir-row">
-                        <i class="fa-regular fa-trash-alt"></i>
-                        Delete Post
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-            </>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div
+          className="post-main-sec"
+          onClick={() => navigate(`/post/${postDetails.id}`)}
+        >
+          <p>{content}</p>
+        </div>
+        <div className="post-footer-sec flex-dir-row">
+          {likeState ? (
+            <button
+              className="post-solid-like-btn flex-dir-row"
+              onClick={() => likeBtnHandler()}
+            >
+              <i
+                style={{ color: "#ff0000" }}
+                className="fa-regular fa-heart"
+              ></i>
+              <span className="likes-count">{totalLikes}</span>
+            </button>
+          ) : (
+            <button
+              className="post-like-btn flex-dir-row"
+              onClick={() => likeBtnHandler()}
+            >
+              <i className="fa-regular fa-heart"></i>
+              <span className="likes-count">{totalLikes}</span>
+            </button>
           )}
+          <button
+            className="post-comment-btn flex-dir-row"
+            onClick={() => navigate(`/post/${postDetails.id}`)}
+          >
+            <i className="fa-regular fa-comment"></i>
+            <span>{postDetails?.comments.length}</span>
+          </button>
+          <button className="post-share-btn">
+            <i className="fa-solid fa-share 3x"></i>
+          </button>
         </div>
       </div>
-
-      <div className="post-main-sec">
-        <p>{content}</p>
-      </div>
-      <div className="post-footer-sec flex-dir-row">
-        {likeState ? (
-          <button
-            className="post-solid-like-btn flex-dir-row"
-            onClick={() => likeBtnHandler()}
-          >
-            <i style={{ color: "#ff0000" }} className="fa-regular fa-heart"></i>
-            <span className="likes-count">{totalLikes}</span>
-          </button>
-        ) : (
-          <button
-            className="post-like-btn flex-dir-row"
-            onClick={() => likeBtnHandler()}
-          >
-            <i className="fa-regular fa-heart"></i>
-            <span className="likes-count">{totalLikes}</span>
-          </button>
-        )}
-        <button className="post-comment-btn">
-          <i className="fa-regular fa-comment"></i>
-        </button>
-        <button className="post-share-btn">
-          <i className="fa-solid fa-share 3x"></i>
-        </button>
-      </div>
-    </div>
+    )
   );
 };
 

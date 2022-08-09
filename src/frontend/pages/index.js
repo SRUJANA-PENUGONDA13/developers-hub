@@ -5,3 +5,4 @@ export { Posts } from "./posts/Posts";
 export { Bookmark } from "./bookmark/Bookmark";
 export { Profile } from "./profile/Profile";
 export { Explore } from "./explore/Explore";
+export { SinglePost } from "./singlepost/SinglePost";

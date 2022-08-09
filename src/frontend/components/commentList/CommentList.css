@@ -1,0 +1,13 @@
+.comment-box {
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin: 1rem;
+}
+
+.replies {
+  padding: 0rem 3rem;
+}
+
+.comment-text {
+  color: var(--primary--color);
+}
