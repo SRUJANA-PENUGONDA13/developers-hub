@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setDisplayCreatePost } from "../../redux/slices/postsSlice";
 import { StackedList, CreatePost } from "../../components";
+import { useOutsideClickHandler } from "../../custom-hooks/OutsideClickHandler";
 import "./LeftNavBar.css";
 
 const LeftNavBar = () => {

@@ -89,6 +89,7 @@ export const createPostHandler = function (schema, request) {
       },
       name: name,
       username: user.username,
+      comments: [],
       createdAt: formatDate(),
       updatedAt: formatDate(),
     };
@@ -112,6 +113,7 @@ export const createPostHandler = function (schema, request) {
  * */
 export const editPostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+
   try {
     if (!user) {
       return new Response(
@@ -126,7 +128,8 @@ export const editPostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     const { postData } = JSON.parse(request.requestBody);
-    let post = schema.posts.findBy({ _id: postId }).attrs;
+    let post = schema.posts.findBy({ id: postId }).attrs;
+
     if (post.username !== user.username) {
       return new Response(
         400,
@@ -136,8 +139,9 @@ export const editPostHandler = function (schema, request) {
         }
       );
     }
-    post = { ...post, ...postData };
-    this.db.posts.update({ _id: postId }, post);
+
+    post = { ...post, content: postData };
+    this.db.posts.update({ id: postId }, post);
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
     return new Response(
@@ -260,6 +264,7 @@ export const dislikePostHandler = function (schema, request) {
  * */
 export const deletePostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+
   try {
     if (!user) {
       return new Response(
@@ -272,8 +277,10 @@ export const deletePostHandler = function (schema, request) {
         }
       );
     }
+
     const postId = request.params.postId;
-    let post = schema.posts.findBy({ _id: postId }).attrs;
+    let post = schema.posts.findBy({ id: postId }).attrs;
+
     if (post.username !== user.username) {
       return new Response(
         400,
@@ -285,7 +292,7 @@ export const deletePostHandler = function (schema, request) {
         }
       );
     }
-    this.db.posts.remove({ _id: postId });
+    this.db.posts.remove({ id: postId });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
     return new Response(

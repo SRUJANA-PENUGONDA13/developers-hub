@@ -1,9 +1,20 @@
 import { AvatarWithName } from "../index";
 import { useState, useEffect, useRef } from "react";
-import { updateLikedPosts } from "../../services";
-import { useSelector } from "react-redux";
-import { savePosts } from "../../redux/slices/postsSlice";
-import { getUserDetails } from "../../services";
+import {
+  updateLikedPosts,
+  bookmarkPost,
+  removeBookmarkPost,
+  getUserDetails,
+  updateUserData,
+  deletePost,
+} from "../../services";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  savePosts,
+  setCurrentPost,
+  setDisplayCreatePost,
+} from "../../redux/slices/postsSlice";
+import { setUserDetails } from "../../redux/slices/userSlice";
 import { useOutsideClickHandler } from "../../custom-hooks/OutsideClickHandler";
 import { useNavigate } from "react-router-dom";
 
@@ -16,10 +27,12 @@ const Post = ({ postDetails }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const { userDetails } = useSelector((state) => state.user);
   const [postOwner, setPostOwner] = useState({});
+  const [bookmark, setBookmark] = useState(false);
 
   const ref = useRef();
   const { resetMenu } = useOutsideClickHandler(ref);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const updateLikes = (likesDetails) => {
     if (likesDetails.likeCount > 0) {
@@ -57,6 +70,29 @@ const Post = ({ postDetails }) => {
     return flag;
   };
 
+  const savePostHandler = async () => {
+    const data = await bookmarkPost(postDetails.id);
+    setBookmark(true);
+    const userData = await updateUserData(data);
+    dispatch(setUserDetails(userData));
+    setOpenMenu(false);
+  };
+
+  const removeSavePostHandler = async () => {
+    const data = await removeBookmarkPost(postDetails.id);
+    setBookmark(false);
+    const userData = await updateUserData(data);
+    dispatch(setUserDetails(userData));
+    setOpenMenu(false);
+  };
+
+  const deletePostHandler = async () => {
+    const data = await deletePost(postDetails.id);
+    dispatch(savePosts(data));
+    removeSavePostHandler();
+    setOpenMenu(false);
+  };
+
   useEffect(() => {
     updateLikes(likes);
   }, [likes]);
@@ -76,91 +112,125 @@ const Post = ({ postDetails }) => {
     })();
   }, [postDetails, userDetails]);
 
+  useEffect(() => {
+    const isBookmarked = userDetails.bookmarks.some(
+      (currPost) => currPost.id === postDetails.id
+    );
+
+    if (isBookmarked) setBookmark(true);
+    else setBookmark(false);
+  }, []);
+
   return (
     userDetails && (
-      <div className="post-container flex-dir-col">
-        <div className="post-nav-sec flex-dir-row">
-          <div className="post-nav-left-sec flex-dir-row">
-            <AvatarWithName user={postOwner} />
-          </div>
-          <div className="ellipsis-icon">
-            <button className="post-control">
-              <i
-                class="fa fa-ellipsis-v"
-                aria-hidden="true"
-                onClick={() => setOpenMenu(!openMenu)}
-              ></i>
-            </button>
-            {openMenu && (
-              <>
-                <div className="post-menu flex-dir-col" ref={ref}>
-                  <div>
-                    <button className="post-control post-menu-btn flex-dir-row">
-                      <i class="fa-regular fa-bookmark"></i>
-                      Save post
-                    </button>
+      <>
+        <div className="post-container flex-dir-col">
+          <div className="post-nav-sec flex-dir-row">
+            <div className="post-nav-left-sec flex-dir-row">
+              <AvatarWithName user={postOwner} />
+            </div>
+            <div className="ellipsis-icon">
+              <button className="post-control">
+                <i
+                  class="fa fa-ellipsis-v"
+                  aria-hidden="true"
+                  onClick={() => setOpenMenu(!openMenu)}
+                ></i>
+              </button>
+              {openMenu && (
+                <>
+                  <div className="post-menu flex-dir-col" ref={ref}>
+                    {bookmark ? (
+                      <div>
+                        <button
+                          className="post-control post-menu-btn flex-dir-row"
+                          onClick={() => removeSavePostHandler()}
+                        >
+                          <i class="fa-regular fa-bookmark"></i>
+                          Unsave post
+                        </button>
+                      </div>
+                    ) : (
+                      <div>
+                        <button
+                          className="post-control post-menu-btn flex-dir-row"
+                          onClick={() => savePostHandler()}
+                        >
+                          <i class="fa-regular fa-bookmark"></i>
+                          Save post
+                        </button>
+                      </div>
+                    )}
+                    {username === userDetails.username && (
+                      <>
+                        <div>
+                          <button
+                            className="post-control post-menu-btn flex-dir-row"
+                            onClick={() => {
+                              dispatch(setCurrentPost(postDetails));
+                              dispatch(setDisplayCreatePost(true));
+                            }}
+                          >
+                            <i class="fa-regular fa-edit"></i>
+                            Edit Post
+                          </button>
+                        </div>
+                        <div>
+                          <button
+                            className="post-control post-menu-btn flex-dir-row"
+                            onClick={() => deletePostHandler()}
+                          >
+                            <i class="fa-regular fa-trash-alt"></i>
+                            Delete Post
+                          </button>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  {username === userDetails.username && (
-                    <>
-                      <div>
-                        <button className="post-control post-menu-btn flex-dir-row">
-                          <i class="fa-regular fa-edit"></i>
-                          Edit Post
-                        </button>
-                      </div>
-                      <div>
-                        <button className="post-control post-menu-btn flex-dir-row">
-                          <i class="fa-regular fa-trash-alt"></i>
-                          Delete Post
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
-        </div>
-
-        <div
-          className="post-main-sec"
-          onClick={() => navigate(`/post/${postDetails.id}`)}
-        >
-          <p>{content}</p>
-        </div>
-        <div className="post-footer-sec flex-dir-row">
-          {likeState ? (
-            <button
-              className="post-solid-like-btn flex-dir-row"
-              onClick={() => likeBtnHandler()}
-            >
-              <i
-                style={{ color: "#ff0000" }}
-                className="fa-regular fa-heart"
-              ></i>
-              <span className="likes-count">{totalLikes}</span>
-            </button>
-          ) : (
-            <button
-              className="post-like-btn flex-dir-row"
-              onClick={() => likeBtnHandler()}
-            >
-              <i className="fa-regular fa-heart"></i>
-              <span className="likes-count">{totalLikes}</span>
-            </button>
-          )}
-          <button
-            className="post-comment-btn flex-dir-row"
+          <div
+            className="post-main-sec"
             onClick={() => navigate(`/post/${postDetails.id}`)}
           >
-            <i className="fa-regular fa-comment"></i>
-            <span>{postDetails?.comments.length}</span>
-          </button>
-          <button className="post-share-btn">
-            <i className="fa-solid fa-share 3x"></i>
-          </button>
+            <p>{content}</p>
+          </div>
+          <div className="post-footer-sec flex-dir-row">
+            {likeState ? (
+              <button
+                className="post-solid-like-btn flex-dir-row"
+                onClick={() => likeBtnHandler()}
+              >
+                <i
+                  style={{ color: "#ff0000" }}
+                  className="fa-regular fa-heart"
+                ></i>
+                <span className="likes-count">{totalLikes}</span>
+              </button>
+            ) : (
+              <button
+                className="post-like-btn flex-dir-row"
+                onClick={() => likeBtnHandler()}
+              >
+                <i className="fa-regular fa-heart"></i>
+                <span className="likes-count">{totalLikes}</span>
+              </button>
+            )}
+            <button
+              className="post-comment-btn flex-dir-row"
+              onClick={() => navigate(`/post/${postDetails.id}`)}
+            >
+              <i className="fa-regular fa-comment"></i>
+              <span>{postDetails?.comments.length}</span>
+            </button>
+            <button className="post-share-btn">
+              <i className="fa-solid fa-share 3x"></i>
+            </button>
+          </div>
         </div>
-      </div>
+      </>
     )
   );
 };
