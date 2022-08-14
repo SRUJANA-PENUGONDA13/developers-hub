@@ -35,3 +35,7 @@
   gap: 1rem;
   margin-bottom: 10px;
 }
+
+.explore-link {
+  color: var(--explore--link);
+}

@@ -28,7 +28,7 @@ const Signin = () => {
       localStorage.setItem("token", encodedToken);
       dispatch(setAuthentication(!!encodedToken));
       dispatch(setUserDetails(foundUser));
-      navigate("/explore");
+      navigate("/posts");
       toast({
         title: "Login Successful",
         status: "success",

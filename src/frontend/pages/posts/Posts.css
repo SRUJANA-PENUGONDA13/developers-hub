@@ -1,5 +1,5 @@
 .create-post-modal {
-  right: 4rem;
+  padding-right: 4rem;
   display: flex;
   justify-content: center;
   position: fixed;
