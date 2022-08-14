@@ -11,6 +11,8 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  const [passwordIcon, setPasswordIcon] = useState(false);
+  const [confirmPasswordIcon, setConfirmPasswordIcon] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -64,25 +66,53 @@ const Signup = () => {
         </div>
         <div className="auth-field">
           <label for="password">Password</label>
-          <Input
-            type="password"
-            placeholder="*************"
-            id="password"
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-            required
-          />
+          <div className="password-sec flex-dir-row">
+            <Input
+              className="password-field"
+              type={passwordIcon ? "" : "password"}
+              placeholder="*************"
+              id="password"
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              required
+            />
+            {passwordIcon ? (
+              <i
+                class="fa-regular fa-eye password-icon"
+                onClick={() => setPasswordIcon(!passwordIcon)}
+              ></i>
+            ) : (
+              <i
+                class="fa-regular fa-eye-slash password-icon"
+                onClick={() => setPasswordIcon(!passwordIcon)}
+              ></i>
+            )}
+          </div>
         </div>
         <div className="auth-field">
           <label for="confirm-password">Confirm Password</label>
-          <Input
-            type="password"
-            placeholder="*************"
-            id="confirm-password"
-            onChange={(e) =>
-              setUser({ ...user, confirmPassword: e.target.value })
-            }
-            required
-          />
+          <div className="password-sec flex-dir-row">
+            <Input
+              type={confirmPasswordIcon ? "" : "password"}
+              className="password-field"
+              placeholder="*************"
+              id="confirm-password"
+              onChange={(e) =>
+                setUser({ ...user, confirmPassword: e.target.value })
+              }
+              required
+            />
+            {confirmPasswordIcon ? (
+              <i
+                class="fa-regular fa-eye password-icon"
+                onClick={() => setConfirmPasswordIcon(!confirmPasswordIcon)}
+              ></i>
+            ) : (
+              <i
+                class="fa-regular fa-eye-slash password-icon"
+                onClick={() => setConfirmPasswordIcon(!confirmPasswordIcon)}
+              ></i>
+            )}
+          </div>
         </div>
         <div className="auth-field signup-agreement flex-dir-row">
           <input type="checkbox" value="agreement" id="agreement" required />

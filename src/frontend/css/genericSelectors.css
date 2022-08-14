@@ -76,6 +76,22 @@
   overflow-y: scroll;
 }
 
+.password-sec {
+  border: 1px solid #e2e8f0;
+  outline: 2px solid transparent;
+  justify-content: center;
+  gap: 5px;
+  padding: 0px 5px;
+  margin-top: 1rem;
+  align-items: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.password-field {
+  border: none !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
