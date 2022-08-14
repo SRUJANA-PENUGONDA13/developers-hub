@@ -8,12 +8,14 @@ import {
   Explore,
   Bookmark,
   Profile,
+  Empty,
   SinglePost,
 } from "../pages";
 
 const Router = () => {
   return (
     <Routes>
+      {window.innerWidth < 600 && <Route path="/" element={<Empty />}></Route>}
       <Route path="/" element={<Home />}></Route>
       <Route exact path="/signin" element={<SigninPage />}></Route>
       <Route exact path="/signup" element={<SignupPage />}></Route>

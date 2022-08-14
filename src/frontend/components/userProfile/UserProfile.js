@@ -22,6 +22,7 @@ const UserProfile = () => {
 
   const userName =
     profileUserDetails?.firstName + " " + profileUserDetails?.lastName;
+
   const dispatch = useDispatch();
 
   const isUserExistInList = (list, userName) => {

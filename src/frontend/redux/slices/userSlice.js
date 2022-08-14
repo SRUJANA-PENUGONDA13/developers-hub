@@ -18,6 +18,7 @@ const userSlice = createSlice({
     savePosts: (state, action) => {
       state.posts = action.payload;
     },
+
     setProfileModalType: (state, action) => {
       state.profileModalType = action.payload;
     },

@@ -169,4 +169,62 @@ export const posts = [
     ],
     id: "3",
   },
+  {
+    _id: uuid(),
+    content: "I have successfully completed 4 assignments of neogcamp",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "srujana penugonda",
+    username: "srujanapenugonda@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [],
+  },
+  {
+    _id: uuid(),
+    content: "Love whatever you are doing so that you don't get feel stressed",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "srujana penugonda",
+    username: "srujanapenugonda@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [],
+  },
+  {
+    _id: uuid(),
+    content:
+      "Neogcamp is one of the best course to learn full stack development with proof of work concept",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "Karthik Bandi",
+    username: "karthikbandi@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [],
+  },
+  {
+    _id: uuid(),
+    content:
+      "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta and a community of individual developers and companies",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    name: "Devika Gill",
+    username: "devikagill@gmail.com",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    comments: [],
+  },
 ];

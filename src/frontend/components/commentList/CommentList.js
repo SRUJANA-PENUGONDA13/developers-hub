@@ -17,6 +17,7 @@ const CommentList = ({ comments, postId }) => {
   const addCommentHandler = async () => {
     const data = await addComment(commentText, postId);
     setComntList(data);
+    setCommentText("");
   };
 
   const editCommentHandler = async (commentId, comment, reply) => {

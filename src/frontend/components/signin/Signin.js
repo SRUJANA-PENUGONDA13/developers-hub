@@ -14,6 +14,7 @@ const Signin = () => {
     password: "",
   });
   const [error, setError] = useState(false);
+  const [passwordIcon, setPasswordIcon] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -65,14 +66,28 @@ const Signin = () => {
         </div>
         <div className="auth-field">
           <label for="password">Password</label>
-          <Input
-            type="password"
-            placeholder="*********"
-            onChange={(e) =>
-              setLoginDetails({ ...loginDetails, password: e.target.value })
-            }
-            required
-          />
+          <div className="password-sec flex-dir-row">
+            <Input
+              className="password-field"
+              type={passwordIcon ? "" : "password"}
+              placeholder="*********"
+              onChange={(e) =>
+                setLoginDetails({ ...loginDetails, password: e.target.value })
+              }
+              required
+            />
+            {passwordIcon ? (
+              <i
+                class="fa-regular fa-eye password-icon"
+                onClick={() => setPasswordIcon(!passwordIcon)}
+              ></i>
+            ) : (
+              <i
+                class="fa-regular fa-eye-slash password-icon"
+                onClick={() => setPasswordIcon(!passwordIcon)}
+              ></i>
+            )}
+          </div>
         </div>
         <div className="auth-field credentials-handler flex-dir-row">
           <div className="remeber-me">

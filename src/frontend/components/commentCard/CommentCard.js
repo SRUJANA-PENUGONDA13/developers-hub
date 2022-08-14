@@ -1,5 +1,4 @@
 import { AvatarWithName } from "../../components";
-import { getUserDetails, updateComment } from "../../services";
 import { useSelector } from "react-redux";
 import { Input, Button } from "@chakra-ui/react";
 import { useState, useEffect, useRef } from "react";
@@ -43,22 +42,18 @@ const CommentCard = ({
             </button>
             {openMenu && (
               <div className="comment-menu flex-dir-col" ref={ref}>
-                <div>
-                  <button
-                    className="comment-control comment-menu-btn flex-dir-row"
-                    onClick={() => {
-                      setEdit(!displayEdit);
-                    }}
-                  >
+                <div
+                  onClick={() => {
+                    setEdit(!displayEdit);
+                  }}
+                >
+                  <button className="comment-control comment-menu-btn flex-dir-row">
                     <i class="fa-regular fa-edit"></i>
                     Edit
                   </button>
                 </div>
-                <div>
-                  <button
-                    className="comment-control comment-menu-btn flex-dir-row"
-                    onClick={() => deleteComment(comment._id)}
-                  >
+                <div onClick={() => deleteComment(comment._id)}>
+                  <button className="comment-control comment-menu-btn flex-dir-row">
                     <i class="fa-regular fa-trash-alt"></i>
                     Delete
                   </button>
