@@ -79,6 +79,7 @@ const Post = ({ postDetails }) => {
   };
 
   const removeSavePostHandler = async () => {
+    console.log("removeSavePostHandler");
     const data = await removeBookmarkPost(postDetails.id);
     setBookmark(false);
     const userData = await updateUserData(data);
@@ -89,7 +90,7 @@ const Post = ({ postDetails }) => {
   const deletePostHandler = async () => {
     const data = await deletePost(postDetails.id);
     dispatch(savePosts(data));
-    removeSavePostHandler();
+    if (bookmark) removeSavePostHandler();
     setOpenMenu(false);
   };
 
@@ -109,17 +110,14 @@ const Post = ({ postDetails }) => {
       if (userData) {
         setPostOwner(userData);
       }
+
+      const isBookmarked = userDetails.bookmarks.some(
+        (currPost) => currPost.id === postDetails.id
+      );
+      if (isBookmarked) setBookmark(true);
+      else setBookmark(false);
     })();
-  }, [postDetails, userDetails]);
-
-  useEffect(() => {
-    const isBookmarked = userDetails.bookmarks.some(
-      (currPost) => currPost.id === postDetails.id
-    );
-
-    if (isBookmarked) setBookmark(true);
-    else setBookmark(false);
-  }, []);
+  }, [postDetails]);
 
   return (
     userDetails && (

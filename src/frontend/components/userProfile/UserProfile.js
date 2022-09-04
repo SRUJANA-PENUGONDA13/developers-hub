@@ -9,16 +9,17 @@ import {
   setDisplayProfileModal,
   setProfileUserDetails,
   setUserDetails,
+  saveUserPosts,
 } from "../../redux/slices/userSlice";
 import { ProfileModal } from "../../components";
 import "./UserProfile.css";
 
 const UserProfile = () => {
-  const [posts, setPosts] = useState([]);
   const [actionBtn, setActionBtn] = useState("Edit Profile");
-  const { displayProfileModal, userDetails, profileUserDetails } = useSelector(
-    (state) => state.user
-  );
+  const [currentUserPosts, setUserPosts] = useState([]);
+  const { displayProfileModal, userDetails, profileUserDetails, userPosts } =
+    useSelector((state) => state.user);
+  const { posts } = useSelector((store) => store.posts);
 
   const userName =
     profileUserDetails?.firstName + " " + profileUserDetails?.lastName;
@@ -75,15 +76,12 @@ const UserProfile = () => {
           setActionBtn("Edit Profile");
         else setActionBtn("Follow");
       }
-
-      (async () => {
-        const userPosts = await getSpecificUserPosts(
-          profileUserDetails.username
-        );
-        setPosts(userPosts);
-      })();
     }
-  }, [profileUserDetails]);
+    (async () => {
+      const userposts = await getSpecificUserPosts(profileUserDetails.username);
+      setUserPosts(userposts);
+    })();
+  }, [profileUserDetails, posts]);
 
   return (
     <>
@@ -128,7 +126,7 @@ const UserProfile = () => {
               <p className="status-label">Following</p>
             </div>
             <div className="posts flex-dir-col">
-              <b>{posts?.length}</b>
+              <b>{userPosts?.length}</b>
               <p className="status-label">Posts</p>
             </div>
             <div
@@ -144,12 +142,10 @@ const UserProfile = () => {
         </div>
         <div className="posts-details flex-dir-col">
           <h1 className="posts-header">Posts</h1>
-          {posts.length > 0 &&
-            posts
-              .map((postdetails) => {
-                return <Post postDetails={postdetails} />;
-              })
-              .reverse()}
+          {currentUserPosts.length > 0 &&
+            currentUserPosts.map((postdetails) => {
+              return <Post postDetails={postdetails} />;
+            })}
         </div>
       </div>
     </>

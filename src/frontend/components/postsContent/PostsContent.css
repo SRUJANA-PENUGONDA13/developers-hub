@@ -15,8 +15,8 @@
 .tablist {
   color: var(--text--primary--color);
   width: 100%;
-  gap: 5rem;
-  padding: 0rem 13rem;
+  gap: 3rem;
+  padding: 0rem 10rem;
   align-items: center;
   justify-content: center;
   border: none !important;
