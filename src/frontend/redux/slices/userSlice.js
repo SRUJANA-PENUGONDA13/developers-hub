@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userDetails: {},
   profileUserDetails: {},
-  posts: [],
+  userPosts: [],
   profileModalType: "",
   displayProfileModal: false,
 };
@@ -15,10 +15,10 @@ const userSlice = createSlice({
     setUserDetails: (state, action) => {
       state.userDetails = action.payload;
     },
-    savePosts: (state, action) => {
-      state.posts = action.payload;
-    },
 
+    saveUserPosts: (state, action) => {
+      state.userPosts = action.payload;
+    },
     setProfileModalType: (state, action) => {
       state.profileModalType = action.payload;
     },
@@ -35,6 +35,7 @@ const { actions, reducer } = userSlice;
 export const {
   setUserDetails,
   savePosts,
+  saveUserPosts,
   setProfileModalType,
   setDisplayProfileModal,
   setProfileUserDetails,

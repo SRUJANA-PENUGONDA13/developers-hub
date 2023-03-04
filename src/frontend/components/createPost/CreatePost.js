@@ -46,12 +46,12 @@ const CreatePost = ({ onClick }) => {
       ></textarea>
       <div className="create-post-footer flex-dir-row">
         <div className="create-post-media flex-dir-row">
-          <Button className="image-btn" size="sm">
+          {/* <Button className="image-btn" size="sm">
             <i class="far fa-image"></i>
           </Button>
           <Button className="emoji-btn" size="sm">
             <i class="fa-solid fa-face-smile"></i>
-          </Button>
+          </Button> */}
         </div>
         <div className="create-post-btns flex-dir-row">
           <Button

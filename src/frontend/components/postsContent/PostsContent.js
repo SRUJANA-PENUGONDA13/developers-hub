@@ -42,10 +42,21 @@ const PostsContent = () => {
         <div className="posts-tabs flex-dir-row">
           <Tabs size="md" variant="enclosed" colorScheme="white">
             <TabList mb="1em" className="tablist flex-dir-row">
+              <Tab className="tab-btn">All</Tab>
               <Tab className="tab-btn">Trending</Tab>
               <Tab className="tab-btn">Latest</Tab>
             </TabList>
             <TabPanels>
+              <TabPanel>
+                <div className="multiple-posts flex-dir-col">
+                  {filteredPosts.length > 0 &&
+                    filteredPosts
+                      .map((postdetails) => {
+                        return <Post postDetails={postdetails} />;
+                      })
+                      .reverse()}
+                </div>
+              </TabPanel>
               <TabPanel>
                 <div className="multiple-posts flex-dir-col">
                   {filteredPosts.length > 0 &&
